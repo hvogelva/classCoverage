@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Class Coverage</title>
+    <meta name="description" content="">
+    <meta name="author" content="Hernán Vogel">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="google-site-verification" content="KkPZrfYR7pJu4aQnr6XJOmBPgauKtr48ZmqqrnxaE2E" />-->
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    
+    <!-- Bulma CSS Framework -->
+    <link rel="stylesheet" href="css/bulma/bulma.min.css">
+    <link rel="stylesheet" href="https://bulma.io/vendor/fontawesome-free-5.15.2-web/css/all.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="css/codemirror/codemirror.css">
+    <link rel="stylesheet" href="css/codemirror/vscode-dark.css">
+    <script src="js/codemirror/codemirror.min.js"></script>
+    <script src="js/codemirror/placeholder.min.js"></script>
+    <!-- https://github.com/mauracwarner/codemirror-mode-apex/blob/master/dist/apex.js -->
+    <script src="js/codemirror/apex.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="tabs">
+      <ul>
+        <li class="is-active"><a>Class Coverage</a></li>
+        <li>
+          <a href="https://github.com/hvogelva/classCoverage">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+            <span>View in GitHub</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="section">
+      <h1 class="title">Highlight your class coverage</h1>
+      <h2 class="subtitle">
+        Are you doing a deployment with Salesforce CLI and the coverage of a Apex Class failed? Need help to see where the coverage is missing?<br />
+        Just copy and paste your Apex Class code and the uncovered lines.
+      </h2>
+    </section>
+    <div class="container">
+      <div class="field">
+        <textarea class="textarea is-info" placeholder="Paste your Apex Class code here" id="apexClass" rows="10"></textarea>
+      </div>
+      <div class="field is-grouped">
+        <div class="control is-expanded">
+          <input class="input has-background-dark has-text-light" type="text" id="uncoveredLines"
+            placeholder="Paste your uncovered lines here. E.g. 32,42,81,82,93,134,158,194,195,196,219,...">
+        </div>
+        <div class="control">
+          <button class="button is-primary" onclick="applyLines();">
+            <span class="icon is-small">
+              <i class="fas fa-check"></i>
+            </span>
+            <span>Apply</span>
+          </button>
+        </div>
+        <div class="control">
+          <button class="button is-info" onclick="clearLines();">
+            <span class="icon is-small">
+              <i class="fas fa-times"></i>
+            </span>
+            <span>Clear</span>
+          </button>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <button class="button is-info" onclick="clearForm();">Clear Entire Form</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      let myCodeMirror = CodeMirror.fromTextArea(apexClass, {
+        theme: 'vscode-dark',
+        mode: 'text/x-apex',
+        lineNumbers: true
+      });
+    </script>
+  </body>
+</html>
